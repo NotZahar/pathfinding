@@ -15,6 +15,8 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void delThis();
+
 private:
     Ui::MainWindow *ui;
 };
