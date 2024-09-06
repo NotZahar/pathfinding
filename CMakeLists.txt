@@ -10,13 +10,23 @@ find_package(
         COMPONENTS
             Core
             Gui
-            Widgets)
+            Widgets
+)
+
+qt_standard_project_setup()
 
 qt_add_executable(
     ${PROJECT_NAME}
         src/main.cpp
-        src/views/main_window.hpp src/views/main_window.cpp src/views/main_window.ui
-        src/controllers/main_window_controller.hpp src/controllers/main_window_controller.cpp
+
+        # controllers
+        src/controllers/main/main_window_controller.cpp
+        src/controllers/main/states/state.cpp
+        src/controllers/main/states/init.cpp
+
+        # views
+        src/views/main_window_view.cpp src/views/main_window_view.ui
+        src/views/map_view.cpp src/views/map_view.ui
 )
 
 target_link_libraries(
@@ -27,12 +37,14 @@ target_link_libraries(
             Qt6::Widgets
 )
 
-if(CMAKE_COMPILER_IS_GNUCXX)
-    target_compile_options(${PROJECT_NAME}
-        PRIVATE
-            -Wall
-            -Wextra
-            -Werror
-            -pedantic)
+if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    target_compile_options(
+        ${PROJECT_NAME}
+            PRIVATE
+                -Wall
+                -Wextra
+                -Werror
+                -pedantic
+    )
 endif()
 

@@ -1,0 +1,22 @@
+BasedOnStyle: LLVM
+
+Language: Cpp
+IndentWidth: 4
+
+# function
+AllowShortFunctionsOnASingleLine: None
+
+# pointer
+PointerAlignment: Left
+
+# namespace
+NamespaceIndentation: All
+
+# class
+BreakInheritanceList: BeforeColon
+AccessModifierOffset: -4
+IndentAccessModifiers: false
+PackConstructorInitializers: Never
+
+# enum
+AllowShortEnumsOnASingleLine: false
